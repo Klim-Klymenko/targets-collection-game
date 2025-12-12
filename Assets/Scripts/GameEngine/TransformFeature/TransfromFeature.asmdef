@@ -1,0 +1,4 @@
+﻿{
+  "name": "TransformFeature",
+  "references":[ "GUID:284fdcf792954d4eb6ec61fb0e66c40e", "GUID:a26f8b32e466479eaee18cd92e5e3aa2", "GUID:247a163e3cc6efb42bd22b9023b87ff3", "GUID:0d8beb7f090555447a6cf5ce9e54dbb4" ]
+}
