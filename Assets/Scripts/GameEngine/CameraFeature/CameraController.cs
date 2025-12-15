@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 namespace GameEngine.CameraFeature
 {
     [UsedImplicitly]
-    internal sealed class CameraController : IStartable, ILateUpdatable
+    internal sealed class CameraController : IStartable, IFixedUpdatable
     {
         private readonly CameraFollowingComponent _followingComponent;
 
@@ -19,7 +19,7 @@ namespace GameEngine.CameraFeature
             _followingComponent.CalculateOffset();
         }
 
-        void ILateUpdatable.OnLateUpdate()
+        void IFixedUpdatable.OnFixedUpdate()
         {
             _followingComponent.FollowTarget();
         }
