@@ -30,7 +30,7 @@ namespace GameEngine.TransformFeature
             Vector2 value = _joystick.Value;
             Vector3 movementDirection = new Vector3(value.x, 0, value.y); 
             
-            //There is no need to normalize the movementDirection because LeanJoystick already provides normalized values
+            // There is no need to normalize the movementDirection because LeanJoystick already provides normalized values
             _movementComponent.Move(movementDirection);
         }
     }

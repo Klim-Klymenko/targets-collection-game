@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Common.Entity
 {
-    public sealed class Entity : IEntity
+    public sealed class Entity : MonoBehaviour, IEntity
     {
         private readonly Dictionary<Type, object> _components = new();
 

@@ -8,13 +8,13 @@ namespace GameEngine.CameraFeature
         
         private readonly Transform _cameraTransform;
         private readonly Transform _targetTransform;
-        private readonly float _followingStep;
+        private readonly float _followingSpeed;
         
-        internal CameraFollowingComponent(Transform cameraTransform, Transform targetTransform, float followingStep)
+        internal CameraFollowingComponent(Transform cameraTransform, Transform targetTransform, float followingSpeed)
         {
             _cameraTransform = cameraTransform;
             _targetTransform = targetTransform;
-            _followingStep = followingStep;
+            _followingSpeed = followingSpeed;
         }
         
         internal void CalculateOffset()
@@ -25,7 +25,7 @@ namespace GameEngine.CameraFeature
         internal void FollowTarget()
         {
             Vector3 targetPosition = _targetTransform.position;
-            _cameraTransform.position = Vector3.Lerp(_cameraTransform.position, targetPosition + _offset, _followingStep);
+            _cameraTransform.position = Vector3.Lerp(_cameraTransform.position, targetPosition + _offset, _followingSpeed * Time.deltaTime);
         }
     }
 }

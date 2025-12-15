@@ -6,24 +6,17 @@ namespace GameEngine.CameraFeature
 {
     public sealed class CameraInstaller : MonoInstaller
     {
+        [SerializeField]
+        private Entity _entity;
+        
         [SerializeField] 
         private Transform _transform;
-
+        
         [SerializeField]
-        private float _followingStep = 0.025f;
-
-        private readonly Entity _entity = new();
-        
         private Transform _targetTransform;
-        private DiContainer _diContainer;
         
-        public void InstallBindings(IEntity targetEntity, DiContainer diContainer)
-        { 
-            _targetTransform = targetEntity.GetComponent<Transform>();
-            _diContainer = diContainer;
-            
-            InstallBindings();
-        }
+        [SerializeField]
+        private float _followingSpeed = 3f;
         
         public override void InstallBindings()
         {
@@ -33,13 +26,13 @@ namespace GameEngine.CameraFeature
         
         private void BindComponent()
         {
-            CameraFollowingComponent followingComponent = new(_transform, _targetTransform, _followingStep);
+            CameraFollowingComponent followingComponent = new(_transform, _targetTransform, _followingSpeed);
             _entity.AddComponent(followingComponent);
         }
         
         private void BindController()
         {
-            _diContainer.BindInterfacesTo<CameraController>().AsCached().WithArguments(_entity);
+            Container.BindInterfacesTo<CameraController>().AsCached().WithArguments(_entity);
         }
     }
 }

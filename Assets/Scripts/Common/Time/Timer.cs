@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Zenject;
 
 namespace Common.Time
 {
@@ -13,14 +14,17 @@ namespace Common.Time
         private const byte StartTime = 0;
         private float _currentTime;
         
-        private readonly float _delay;
+        private float _delay;
         
+        [Inject]
         public Timer(float delay)
         {
             _delay = delay;
             _currentTime = delay;
         }
-        
+
+        public Timer() { }
+
         public void Tick(float deltaTime)
         {
             _currentTime = Mathf.Clamp(_currentTime + deltaTime, StartTime, _delay);
@@ -30,6 +34,17 @@ namespace Common.Time
         public void Reset()
         {
             _currentTime = StartTime;
+        }
+        
+        public void SetDelay(float delay)
+        {
+            _delay = delay;
+        }
+        
+        public void SetDelayAndReset(float delay)
+        {
+            _delay = delay;
+            Reset();
         }
         
         public void SetMax()

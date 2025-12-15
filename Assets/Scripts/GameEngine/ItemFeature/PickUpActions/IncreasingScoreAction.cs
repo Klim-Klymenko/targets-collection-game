@@ -2,25 +2,27 @@
 using Common.Physics;
 using GameEngine.Character;
 using UnityEngine;
+using Zenject;
 
 namespace GameEngine.ItemFeature
 {
     [Serializable]
-    internal sealed class IncreasingScoreAction : IColliderAction
+    internal sealed class IncreasingScoreAction : IAction
     {
         [SerializeField]
-        private int _increaseAmount = 1;
+        private int _increaseAmount;
         
-        private Score _score;
+        private ScoreCounter _scoreCounter;
 
-        internal void Construct(Score score)
+        [Inject]
+        internal void Construct(ScoreCounter scoreCounter)
         {
-            _score = score;
+            _scoreCounter = scoreCounter;
         }
-        
-        void IAction<Collider>.Invoke(Collider _)
+
+        void IAction.Invoke()
         {
-            _score.Add(_increaseAmount);
+            _scoreCounter.AddScore(_increaseAmount);
         }
     }
 }

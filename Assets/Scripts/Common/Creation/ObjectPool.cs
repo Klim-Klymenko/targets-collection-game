@@ -12,13 +12,14 @@ namespace Common.Creation
         private readonly T _prefab;
         private readonly Transform _parent;
         
-        public ObjectPool(int poolSize, T prefab, Transform parent, DiContainer diContainer) : base(poolSize)
+        public ObjectPool(int poolSize, T prefab, Transform parent, DiContainer diContainer, bool manualReserve = false) : base(poolSize)
         {
             _diContainer = diContainer;
             _prefab = prefab;
             _parent = parent;
             
-            Reserve();
+            if (!manualReserve)
+                Reserve();
         }
 
         private protected override T Instantiate()

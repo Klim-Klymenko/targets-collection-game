@@ -7,10 +7,10 @@ using UnityEngine;
 namespace GameEngine.ItemFeature
 {
     [Serializable]
-    internal sealed class IncreasingSizeAction : IColliderAction
+    internal sealed class IncreasingScaleAction : IColliderAction
     {
         [SerializeField]
-        private float _multiplyFactor = 3f;
+        private float _scaleIncreaseFactor;
         
         void IAction<Collider>.Invoke(Collider other)
         {
@@ -18,7 +18,7 @@ namespace GameEngine.ItemFeature
                 return;
             
             if (entity.TryGetComponent(out ScaleComponent component))
-                component.MultiplyScale(_multiplyFactor);
+                component.MultiplyScale(_scaleIncreaseFactor);
         }
     }
 }

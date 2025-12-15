@@ -13,7 +13,7 @@ namespace Common.Creation
             _poolSize = poolSize;
         }
 
-        private protected void Reserve()
+        public void Reserve()
         {
             for (int i = 0; i < _poolSize; i++)
             {

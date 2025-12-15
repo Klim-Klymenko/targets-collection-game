@@ -9,16 +9,8 @@ namespace GameEngine.TransformFeature
         [SerializeField]
         private TransformConfig _config;
 
-        private IEntity _entity;
-        private DiContainer _diContainer;
-
-        public void InstallBindings(IEntity entity, DiContainer diContainer)
-        {
-            _entity = entity;
-            _diContainer = diContainer;
-            
-            InstallBindings();
-        }
+        [SerializeField]
+        private Entity _entity;
         
         public override void InstallBindings()
         {
@@ -28,17 +20,16 @@ namespace GameEngine.TransformFeature
 
         private void BindComponents()
         {
-            Rigidbody rigidbody = _entity.GetComponent<Rigidbody>();
+            Rigidbody rigidbody = _entity.gameObject.GetComponent<Rigidbody>();
             MovementComponent movementComponent = new(rigidbody, _config.MovementSpeed);
             _entity.AddComponent(movementComponent);
-
-            Transform transform = _entity.GetComponent<Transform>();
-            ScaleComponent scaleComponent = new(transform, _config.Scale);
+            
+            ScaleComponent scaleComponent = new(_entity.transform, _config.Scale);
             _entity.AddComponent(scaleComponent);
         }
         private void BindController()
         {
-            _diContainer.BindInterfacesTo<TransformController>().AsCached();
+            Container.BindInterfacesTo<TransformController>().AsCached();
         }
     }
 }

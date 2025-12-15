@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ApplicationEngine.Loading
 {
-    [CreateAssetMenu(fileName = "LoadingPipeline", menuName = "Configs/Loading/LoadingPipeline")]
+    [CreateAssetMenu(fileName = "LoadingPipeline", menuName = "Configs/LoadingPipeline")]
     internal sealed class LoadingPipeline : ScriptableObject
     {
         internal IReadOnlyList<ILoadingTask> LoadingTasks => _loadingTasks;
