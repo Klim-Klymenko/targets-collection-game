@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7116443b6d84db88413cdef7caae631, type: 3}
   m_Name: ItemsSpawnConfig
   m_EditorClassIdentifier: 
-  <ItemsCount>k__BackingField: 10
+  <ItemsCount>k__BackingField: 4
   <Area>k__BackingField: {x: 15, y: 15}

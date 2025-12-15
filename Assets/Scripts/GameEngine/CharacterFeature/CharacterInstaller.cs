@@ -1,4 +1,5 @@
 ﻿using Common.Entity;
+using Common.Time;
 using UnityEngine;
 using Zenject;
 using Lean.Gui;
@@ -18,6 +19,7 @@ namespace GameEngine.Character
             BindEntity();
             BindJoystick();
             BindScore();
+            BindTickTimer();
         }
 
         private void BindEntity()
@@ -33,6 +35,11 @@ namespace GameEngine.Character
         private void BindScore()
         {
             Container.Bind<ScoreCounter>().AsSingle();
+        }
+
+        private void BindTickTimer()
+        {
+            Container.BindInterfacesAndSelfTo<TickTimer>().AsSingle();
         }
     }
 }

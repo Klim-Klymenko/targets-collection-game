@@ -15,6 +15,9 @@ namespace GameEngine.ItemFeature
         private ItemsSpawnConfig _config;
         
         [SerializeField]
+        private Transform _characterTransform;
+        
+        [SerializeField]
         private Item[] _itemPrefabs;
         
         [SerializeField]

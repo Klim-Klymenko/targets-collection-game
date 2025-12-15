@@ -1,0 +1,4 @@
+{
+  "name": "ScoreWidgetAdapter",
+  "references":[ "GUID:8ffab11665d84e838b9232c0697dfedd", "GUID:e8321a2394a0459e83246e427788c0cd", "GUID:284fdcf792954d4eb6ec61fb0e66c40e" ]
+}

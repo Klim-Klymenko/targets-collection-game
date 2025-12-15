@@ -49,6 +49,8 @@ namespace ApplicationEngine.Loading
 
         public void RunLoading(LoadableScenes loadingScene)
         {
+            _currentScene = loadingScene;
+            
             LoadingPipeline loadingPipeline = _loadingPipelines[loadingScene];
             _loader.Load(loadingPipeline).Forget();
         }
